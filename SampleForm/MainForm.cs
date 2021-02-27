@@ -12,11 +12,16 @@ namespace SampleForm
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Строковые данные
+        /// </summary>
         private string data;
+
         /// <summary>
         /// Храним нажатие
         /// </summary>
         private bool pressed;
+
         private int x;
         private int y;
         public MainForm()
@@ -72,7 +77,7 @@ namespace SampleForm
 
 
         /// <summary>
-        /// Нажатие мыши
+        /// Нажатие кнопки мыши
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -93,13 +98,50 @@ namespace SampleForm
             pressed = false;
         }
 
-
-        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Перемещение мыши
+        /// </summary>
+        /// <param name="sender">Перемещаемый объект</param>
+        /// <param name="e"></param>
+        private void card1_MouseMove(object sender, MouseEventArgs e)
         {
-            TextBox text = new TextBox();
+            try
+            {
+                if (pressed)
+                {
+                    Control control = (Control)sender;
+                    control.Location = new Point(e.X + control.Location.X - x, e.Y + control.Location.Y - y);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        
+
+        /// <summary>
+        /// Создание новой карточки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TextBox text = new TextBox()
+            {
+                Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204))),
+                Location = new Point(0, menuStrip1.Height),
+                ReadOnly = true,
+                Text = "карточка"
+        };
+            // Обработчики событий
+            text.MouseUp += card1_MouseUp;
+            text.MouseDown += card1_MouseDown;
+            text.MouseMove += card1_MouseMove;
+            // Добавление элемента на форму
+            Controls.Add(text);
+        }
+
 
     }
 }

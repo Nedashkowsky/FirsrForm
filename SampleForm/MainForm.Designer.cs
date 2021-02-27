@@ -38,6 +38,7 @@ namespace SampleForm
             this.cardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.card1 = new System.Windows.Forms.TextBox();
+            this.card2 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,25 +108,43 @@ namespace SampleForm
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
-            this.createToolStripMenuItem.Text = "Создать";
+            this.createToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.createToolStripMenuItem.Text = "&Создать";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // card1
             // 
-            this.card1.Location = new System.Drawing.Point(131, 115);
+            this.card1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.card1.Location = new System.Drawing.Point(48, 102);
             this.card1.Name = "card1";
             this.card1.ReadOnly = true;
-            this.card1.Size = new System.Drawing.Size(150, 22);
+            this.card1.Size = new System.Drawing.Size(129, 38);
             this.card1.TabIndex = 1;
             this.card1.Text = "карточка";
+            this.card1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.card1_MouseDown);
+            this.card1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.card1_MouseMove);
             this.card1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.card1_MouseUp);
+            // 
+            // card2
+            // 
+            this.card2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.card2.Location = new System.Drawing.Point(48, 172);
+            this.card2.Name = "card2";
+            this.card2.ReadOnly = true;
+            this.card2.Size = new System.Drawing.Size(129, 38);
+            this.card2.TabIndex = 2;
+            this.card2.Text = "карточка";
+            this.card2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.card1_MouseDown);
+            this.card2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.card1_MouseMove);
+            this.card2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.card1_MouseUp);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.card2);
             this.Controls.Add(this.card1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -150,6 +169,7 @@ namespace SampleForm
         private System.Windows.Forms.TextBox card1;
         private System.Windows.Forms.ToolStripMenuItem cardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createToolStripMenuItem;
+        private System.Windows.Forms.TextBox card2;
     }
 }
 
